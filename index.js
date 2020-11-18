@@ -6,7 +6,6 @@ app.use(express.json())
 app.use(cors())
 
 morgan.token('body', (req, res) => {
-    req.body.id = undefined
     return JSON.stringify(req.body)
 })
 
@@ -62,6 +61,7 @@ app.delete('/api/persons/:id', (req, res) => {
 app.post('/api/persons/', (req, res) => {
     const body = req.body
     body.id = Math.floor(Math.random() * Math.floor(500))
+    console.log(body)
 
     if (!body.name) {
         return res.status(400).json({
