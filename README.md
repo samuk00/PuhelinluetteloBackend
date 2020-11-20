@@ -1,3 +1,3 @@
 # PuhelinluetteloBackend
 
-https://calm-ocean-21404.herokuapp.com/api/persons
+https://calm-ocean-21404.herokuapp.com/
