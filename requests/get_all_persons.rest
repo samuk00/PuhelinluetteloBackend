@@ -1,1 +1,1 @@
-GET https://calm-ocean-21404.herokuapp.com/api/persons
+GET http://localhost:3001/api/persons

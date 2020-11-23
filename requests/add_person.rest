@@ -1,7 +1,7 @@
-POST https://calm-ocean-21404.herokuapp.com/api/persons
+POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {   
-    "name": "Kaapeli",
-    "number": "434242432423"
+    "name": "Matti Meikäläinen",
+    "number": "434244234242"
 }
