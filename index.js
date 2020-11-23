@@ -10,13 +10,13 @@ app.use(express.json())
 app.use(cors())
 
 
-morgan.token('body', (req, res) => {
+morgan.token('body', (req) => {
     const body = req.body
     body.id = undefined
     return JSON.stringify(body)
 })
 
-app.use(morgan(':method :url :status - :res[content-length] - :response-time ms - :body'));
+app.use(morgan(':method :url :status - :res[content-length] - :response-time ms - :body'))
 
 app.get('/api/persons', (req, res, next) => {
     Person.find({}).then(persons => {
@@ -44,7 +44,7 @@ app.get('/api/persons/:id', (req, res, next) => {
 app.delete('/api/persons/:id', (req, res, next) => {
     const id = req.params.id
     Person.findByIdAndRemove(id)
-        .then(result => {
+        .then(() => {
             res.status(204).end()
         })
         .catch(error => next(error))
@@ -53,27 +53,6 @@ app.delete('/api/persons/:id', (req, res, next) => {
 
 app.post('/api/persons', (req, res, next) => {
     const body = req.body
-    /*
-        if (!body.name) {
-            return res.status(400).json({
-                error: "name missing"
-            })
-        }
-    
-        if (!body.number) {
-            return res.status(400).json({
-                error: "number missing"
-            })
-        }
-        */
-
-    /*
-    if (persons.some(person => person.name === body.name)) {
-        return res.status(400).json({
-            error: "name must be unique"
-        })
-    }
-    */
 
     const newPerson = new Person({
         name: body.name,
